@@ -6,7 +6,7 @@ export default function App() {
   async function getAdvice() {
     const res = await fetch("https://api.adviceslip.com/advice");
     const data = await res.json();
-    // console.log(data.slip.advice);
+    console.log(data.slip.advice, "id:", data.slip.id);
     setAdvice(data.slip.advice);
     setCount((c) => c + 1);
   }

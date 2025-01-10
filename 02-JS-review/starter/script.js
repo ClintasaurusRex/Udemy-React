@@ -335,6 +335,9 @@ async function getTodos() {
   const res = await fetch("https://jsonplaceholder.typicode.com/todos");
   const data = await res.json();
   console.log(data);
+
+  return data;
 }
-getTodos();
+const todos = getTodos();
+console.log(todos); // DOes not work because its async so it will try to cl first
 console.log("clint"); // always arrives before the api call

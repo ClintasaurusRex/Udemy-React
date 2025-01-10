@@ -228,6 +228,13 @@ function getTotalReviewCount(book) {
 console.log(getTotalReviewCount(book));
 */
 
+// Map Method -----------------------------------------------------------------------------------------------------
+
+// Creates a new array without modifying the original
+// Transforms each element using the provided callback function
+// Returns an array of the same length as the original
+// Can transform data into any desired format (numbers, strings, objects)
+
 function getTotalReviewCount(book) {
   const goodreads = book.reviews?.goodreads?.reviewsCount;
   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
@@ -250,4 +257,64 @@ const essentialData = books.map((book) => ({
   author: book.author,
   review: getTotalReviewCount(book),
 }));
+
 essentialData;
+
+// Filter Method - used to filter based on a condition
+
+// The Filter method is used to create a new array containing only the elements that satisfy a specified condition. It evaluates each element against a test condition and returns a new array with only the elements that pass the test (return true). The original array remains unchanged.
+
+const longBooksWithMovie = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+longBooksWithMovie;
+
+const adventureBooks = books
+  .filter((book) => book.genres.includes("adventure"))
+  .map((book) => book.title);
+adventureBooks;
+
+// Reduce Method: ------------------------------------------------------------------------------------------------------
+// The reduce method is a powerful array method that processes each element of an array to create a single output value. It "reduces" an array down to one value by applying a function to each element sequentially.
+
+// Takes a callback function with an accumulator and current element
+// The accumulator stores the running result
+// Second argument (0 in example) is the initial value of accumulator
+// Perfect for calculations like sums, averages, or combining data
+
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+pagesAllBooks;
+
+// Array Sorting -----------------------------------------------------------------------------------------------------------
+// Sort () mutates the original array and thats bad so use the slice method first to make a copy of the original array
+
+const arr = [3, 7, 1, 9, 6];
+const sorted = arr.slice().sort((a, b) => a - b);
+sorted;
+arr;
+
+const sortedByPages = books.slice().sort((a, b) => a.pages - b.pages);
+sortedByPages;
+
+// Working with Immutable arrays ---------------------------------------------------------------------------------
+
+// 1) Add a book object to array
+
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J.K Rowling",
+};
+const booksAfterAdd = [...books, newBook];
+booksAfterAdd;
+
+// 2) Delete a book object from the array
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+booksAfterDelete;
+
+// 3) Update a book object while in the array ---------------------------------------------------------------------
+
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 1210 } : book
+);
+booksAfterUpdate;

@@ -121,7 +121,6 @@ const data = [
     },
   },
 ];
-// Destructuring Objects and Arrays
 function getBooks() {
   return data;
 }
@@ -129,6 +128,11 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+// Destructuring Objects and Arrays
+
+/*
+
 const book = getBook(3);
 book;
 
@@ -222,3 +226,28 @@ function getTotalReviewCount(book) {
   return goodreads + librarything;
 }
 console.log(getTotalReviewCount(book));
+*/
+
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  librarything;
+  return goodreads + librarything;
+}
+
+const books = getBooks();
+books;
+
+const x = [1, 2, 3, 4, 5].map((el) => el * 2);
+console.log(x);
+
+const titles = books.map((book) => book.title);
+titles;
+
+const essentialData = books.map((book) => ({
+  // Use the paratheseis first to return an object like this example
+  title: book.title,
+  author: book.author,
+  review: getTotalReviewCount(book),
+}));
+essentialData;

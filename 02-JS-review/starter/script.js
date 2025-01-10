@@ -129,7 +129,7 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
-const book = getBook(2);
+const book = getBook(1);
 book;
 
 // const title = book.title;
@@ -144,6 +144,22 @@ console.log(author, title, genres);
 // const primaryGenre = genres[0];
 // const secondaryGenre = genres[1];
 
-const [primaryGenre, secondaryGenre] = genres;
+const [primaryGenre, secondaryGenre, ...otherGenres] = genres; // ...Spread Operator
 
-console.log(primaryGenre, secondaryGenre);
+console.log(primaryGenre, secondaryGenre, otherGenres);
+
+const newGenres = [...genres, "epic fantasy"]; // Spread Operator
+newGenres;
+
+const updatedBook = {
+  ...book,
+  // Adding a new property to the object
+  moviePublicationDate: "2001-12-19",
+
+  // Overwriting an existing property
+  pages: 1210,
+}; // Spread Operator
+updatedBook;
+
+const summary = `${title}, a ${pages}-- long book, was written by ${author} and published in ${publicationDate} `;
+summary;

@@ -161,5 +161,7 @@ const updatedBook = {
 }; // Spread Operator
 updatedBook;
 
-const summary = `${title}, a ${pages}-- long book, was written by ${author} and published in ${publicationDate} `;
+const summary = `${title}, a ${pages}-- long book, was written by ${author} and published in ${
+  publicationDate.split("-")[0]
+}`;
 summary;

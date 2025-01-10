@@ -337,3 +337,4 @@ async function getTodos() {
   console.log(data);
 }
 getTodos();
+console.log("clint"); // always arrives before the api call

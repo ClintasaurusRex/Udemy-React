@@ -226,7 +226,7 @@ function getTotalReviewCount(book) {
   return goodreads + librarything;
 }
 console.log(getTotalReviewCount(book));
-*/
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
 
 // Map Method -----------------------------------------------------------------------------------------------------
 
@@ -234,7 +234,7 @@ console.log(getTotalReviewCount(book));
 // Transforms each element using the provided callback function
 // Returns an array of the same length as the original
 // Can transform data into any desired format (numbers, strings, objects)
-
+/*000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 function getTotalReviewCount(book) {
   const goodreads = book.reviews?.goodreads?.reviewsCount;
   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
@@ -318,3 +318,12 @@ const booksAfterUpdate = booksAfterDelete.map((book) =>
   book.id === 1 ? { ...book, pages: 1210 } : book
 );
 booksAfterUpdate;
+*/
+
+// Async and Promises------------------------------------------------------------------------------------------------
+
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+
+console.log("Clint");

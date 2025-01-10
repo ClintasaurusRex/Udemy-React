@@ -129,7 +129,7 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
-const book = getBook(1);
+const book = getBook(2);
 book;
 
 // const title = book.title;
@@ -157,11 +157,25 @@ const updatedBook = {
   moviePublicationDate: "2001-12-19",
 
   // Overwriting an existing property
-  pages: 1210,
+  // pages: 1210,
 }; // Spread Operator
 updatedBook;
 
-const summary = `${title}, a ${pages}-- long book, was written by ${author} and published in ${
-  publicationDate.split("-")[0]
-}`;
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+
+// const getYear = (str, a, b) => str.split("-")[0]; // Arrow function for oneliners
+const getYear = (str) => str.split("-")[0]; //
+console.log(getYear(publicationDate));
+
+const summary = `${title}, a ${pages}-- long book, was written by ${author} and published in ${getYear(
+  publicationDate
+)}. The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie`;
 summary;
+
+// Ternary Operator
+
+const pagesRange = pages > 1000 ? "over a thousand" : "less than 1000";
+pagesRange;
+console.log(`The book ${title} has ${pagesRange} pages`);
